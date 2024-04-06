@@ -1,0 +1,17 @@
+<.button phx-click="greet" phx-value-name="cHICO">
+  Hello <%= @name %>
+</.button>
+<p class="text-xl">MAWNJDNWADIAWIADW</p>
+<.icon name="hero-academic-cap" />
+<.simple_form for={@form} phx-change="validate" phx-submit="save">
+  <.input field={@form[:email]} label="Email" />
+  <.input field={@form[:username]} label="Username" />
+  <:actions>
+    <.button>Save</.button>
+  </:actions>
+</.simple_form>
+
+<.table id="users" rows={@users}>
+  <:col :let={user} label="name"><%= user.name %></:col>
+  <:col :let={user} label="age"><%= user.age %></:col>
+</.table>
