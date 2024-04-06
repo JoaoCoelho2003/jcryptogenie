@@ -1,5 +1,6 @@
 use axum::{extract::ws::WebSocketUpgrade, response::Html, Router, routing::get};
 use dioxus::prelude::*;
+use tower_http::services::ServeDir;
 
 use crate::history::fetch_exchange_rates;
 
@@ -17,8 +18,11 @@ fn app() -> Element {
     });
 
     rsx! {
-        div {
-            "{state:?}"
+        for exchange in state.iter() {
+            div {
+                class: "text-4xl",
+                "{exchange.pair} - {exchange.bid}"
+            }
         }
     }
 }
@@ -30,6 +34,7 @@ async fn main() {
     let view = dioxus_liveview::LiveViewPool::new();
 
     let app = Router::new()
+        .nest_service("/public", ServeDir::new("public"))
         .route(
             "/",
             get(move || async move {
@@ -37,8 +42,12 @@ async fn main() {
                     r#"
             <!DOCTYPE html>
             <html>
-                <head> <title>Dioxus LiveView with axum</title>  </head>
+                <head>
+                    <title>Dioxus LiveView with axum</title>
+                    <script src="https://cdn.tailwindcss.com"></script>
+                </head>
                 <body> <div id="main"></div> </body>
+
                 {glue}
             </html>
             "#,

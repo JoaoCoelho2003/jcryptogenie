@@ -20,3 +20,4 @@ console_error_panic_hook = "0.1.7"
 dioxus-web = "0.5.1"
 axum = { version = "0.7.5", features = ["ws"] }
 dioxus-liveview = { version = "0.5.1", features = ["axum"] }
+tower-http = { version = "0.5.2", features = ["fs"] }
