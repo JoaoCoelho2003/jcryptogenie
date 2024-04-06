@@ -18,6 +18,7 @@ defmodule JcryptogenieWeb.Router do
     pipe_through :browser
 
     live "/", HomeLive
+    live "/config", ConfigLive
   end
 
   # Other scopes may use custom stacks.

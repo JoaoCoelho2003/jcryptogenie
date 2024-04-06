@@ -2,41 +2,36 @@
   <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
     <div class="flex items-center gap-4">
       <a href="/">
-        <img src={~p"/images/logo.svg"} width="36" />
+        <img src={~p"/images/image.png"} width="36" />
       </a>
       <p class="bg-brand/5 text-brand rounded-full px-2 font-medium leading-6">
         v<%= Application.spec(:jcryptogenie, :vsn) %>
       </p>
     </div>
     <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
-      <a href="https://twitter.com/elixirphoenix" class="hover:text-zinc-700">
-        @elixirphoenix
-      </a>
-      <a href="https://github.com/phoenixframework/phoenix" class="hover:text-zinc-700">
+        Jcryptogenie
+      <a href="https://github.com/chicoferreira/jcryptogenie" class="hover:text-zinc-700">
         GitHub
-      </a>
-      <a
-        href="https://hexdocs.pm/phoenix/overview.html"
-        class="rounded-lg bg-zinc-100 px-2 py-1 hover:bg-zinc-200/80"
-      >
-        Get Started <span aria-hidden="true">&rarr;</span>
       </a>
     </div>
   </div>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 </header>
 <main class="px-4 py-20 sm:px-6 lg:px-8">
   <div class="mx-auto max-w-2xl">
     <.flash_group flash={@flash} />
     <%= @inner_content %>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </main>
 
-<footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+<footer class="bg-white rounded-lg shadow-lg m-4 ">
   <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-      © 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+    <span class="text-sm text-gray-500 sm:text-center">
+      © 2024 Jolios, Bugsbyte. All Rights Reserved.
     </span>
-    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
       <li>
         <a href="#" class="hover:underline me-4 md:me-6">About</a>
       </li>
