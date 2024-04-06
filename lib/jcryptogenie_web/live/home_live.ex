@@ -1,21 +1,22 @@
-defmodule JcryptogenieWeb.HomeLive do
+# lib/jcryptogenie_web/live/home_live.ex
+defmodule JcryptogenieWeb.Live.HomeLive do
   use JcryptogenieWeb, :live_view
 
   def mount(_params, _session, socket) do
-    users = [
-      %{name: "John", age: 27},
-      %{name: "Jane", age: 29},
-      %{name: "Alice", age: 25}
-    ]
-
-    {:ok,
-     socket
-     |> assign(users: users)
-     |> assign(:name, "merda")
-     |> assign(:form, to_form(%{}))}
+    {:ok, fetch_crypto_prices(socket)}
   end
 
-  def handle_event("greet", %{"name" => name}, socket) do
-    {:noreply, assign(socket, name: name)}
+  def handle_info(:fetch_crypto_prices, socket) do
+    {:noreply, fetch_crypto_prices(socket)}
+  end
+
+  defp fetch_crypto_prices(socket) do
+
+    parsed_prices = MyApp.CryptoService.fetch_prices()
+
+    {:ok, assign(socket, prices: parsed_prices)}
+  end
+
+  def render(assigns) do
   end
 end
