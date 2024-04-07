@@ -3,15 +3,16 @@ defmodule JcryptogenieWeb.ConfigLive do
 
   def mount(_params, _session, socket) do
     options = %{
-      "media" => 0.5,
-      "Prices" => 0.5,
+      Media: 50,
+      Price: 50
     }
 
-    risk = "High"
+    risk = 0.5
 
     {:ok,
      socket
      |> assign(:options, options)
+     |> assign(:form, to_form(%{"value" => 0}))
      |> assign(:risk, risk)
     }
   end

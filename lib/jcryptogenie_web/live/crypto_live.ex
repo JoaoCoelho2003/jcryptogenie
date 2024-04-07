@@ -1,4 +1,4 @@
-defmodule JcryptogenieWeb.Live.CryptoLive do
+defmodule JcryptogenieWeb.CryptoLive do
   use JcryptogenieWeb, :live_view
 
   def mount(_params, _session, socket) do
@@ -10,7 +10,7 @@ defmodule JcryptogenieWeb.Live.CryptoLive do
   end
 
   defp fetch_and_assign_crypto_data(socket) do
-    case MyApp.CryptoService.fetch_data() do
+    case Jcryptogenie.CryptoService.fetch_data() do
       {:ok, data} ->
         {:ok, assign(socket, crypto_data: data)}
       {:error, _reason} ->
