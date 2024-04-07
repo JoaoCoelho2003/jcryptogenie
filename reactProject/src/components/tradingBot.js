@@ -15,7 +15,7 @@ const TradingBot = () => {
 
   useEffect(() => {
     makeDecision();
-  }, [prices, previousPrices]); // Include previousPrices in the dependencies array
+  }, [prices, previousPrices]);
 
   const fetchPrices = async () => {
     try {
@@ -32,8 +32,6 @@ const TradingBot = () => {
       console.error('Error fetching prices:', error);
     }
   };
-  
-  
 
   const makeDecision = () => {
     Object.entries(prices).forEach(([coin, price]) => {
@@ -47,7 +45,7 @@ const TradingBot = () => {
             setStocks(prevStocks => ({ ...prevStocks, [coin]: 0 }));
           }
         } else if (priceDifference < 0) {
-          const amountToBuy = balance / price; // Calculate the amount to buy based on the current balance
+          const amountToBuy = balance / price;
           if (amountToBuy > 0) {
             setBalance(prevBalance => prevBalance - (amountToBuy * price));
             setStocks(prevStocks => ({ ...prevStocks, [coin]: prevStocks[coin] + amountToBuy }));
@@ -57,16 +55,26 @@ const TradingBot = () => {
     });
   };
 
+  const balanceContainerStyle = {
+    backgroundColor: '#ffffff',
+    borderRadius: '8px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    padding: '20px',
+    width: 'fit-content',
+    margin: '20px auto',
+    opacity: 0.9,
+  };
+
+  const balanceStyle = {
+    fontSize: '24px',
+    fontWeight: 'bold',
+    color: '#4CAF50',
+    marginBottom: '10px',
+  };
+
   return (
-    <div>
-      <div>Balance: ${balance}</div>
-      <div>
-        {Object.entries(stocks).map(([coin, stock]) => (
-          <div key={coin}>
-            {coin}: {stock}
-          </div>
-        ))}
-      </div>
+    <div style={balanceContainerStyle}>
+      <div style={balanceStyle}>Balance: ${balance}</div>
     </div>
   );
 };

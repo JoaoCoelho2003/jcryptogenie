@@ -14,15 +14,19 @@ const Dashboard = () => {
 
   const contentStyle = {
     marginLeft: `${sidebarWidth + contentMargin}px`,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center', // Center items horizontally
+    marginTop: '20px', // Add margin top for space between TradingBot and top of the screen
   };
 
   return (
     <div style={containerStyle}>
       <Sidebar />
       <div style={contentStyle}>
+        <TradingBot />
         <CryptoGraph width={1600} height={600} />
         <MostProfit />
-        <TradingBot /> {}
       </div>
     </div>
   );
